@@ -3,6 +3,7 @@ from django.utils import timezone
 
 
 class Flat(models.Model):
+    new_building = models.BooleanField(null=True)
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     created_at = models.DateTimeField(

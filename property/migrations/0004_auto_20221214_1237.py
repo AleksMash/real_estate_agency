@@ -2,7 +2,6 @@
 import datetime as dt
 
 from django.db import migrations
-from django.db.models import F
 
 
 def set_new_building(apps, schema_editor):

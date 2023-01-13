@@ -15,7 +15,6 @@ def CopyflatDataToOwner(apps, schema_editor):
             }
         )
         owner.flats.add(flat)
-        owner.save()
 
 
 class Migration(migrations.Migration):

@@ -47,7 +47,8 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    liked_by = models.ManyToManyField(User,  related_name='liked_flats', blank=True)
+    liked_by = models.ManyToManyField(User,  related_name='liked_flats', blank=True,
+                                      verbose_name='Лайкнули')
     
 
     def __str__(self):
@@ -59,14 +60,15 @@ class Complaint(models.Model):
                                 on_delete=models.CASCADE, related_name='complaints')
     flat = models.ForeignKey(Flat, verbose_name='Квартира, на которую жаловались',
                              on_delete=models.CASCADE, related_name='complaints')
-    text = models.TextField()
+    text = models.TextField(verbose_name='Текст жалобы')
 
 class Owner(models.Model):
     name = models.CharField('ФИО владельца', max_length=200, db_index=True)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-    owner_pure_phone = PhoneNumberField(
+    phonenumber = models.CharField('Номер владельца', max_length=20)
+    pure_phone = PhoneNumberField(
         verbose_name='Нормализованный номер владельца', blank=True, null=True)
-    flats = models.ManyToManyField(Flat, verbose_name='Квартиры', related_name='owners')
+    flats = models.ManyToManyField(Flat, verbose_name='Квартиры', related_name='owners',
+                                   null=True)
 
     def __str__(self):
         return self.name

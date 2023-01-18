@@ -6,7 +6,7 @@ import phonenumbers as pn
 
 def normalize_phone(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         phone = pn.parse(flat.owners_phonenumber, 'RU')
         if pn.is_valid_number(phone) and pn.is_possible_number(phone):
             flat.owner_pure_phone = pn.format_number(phone,pn.PhoneNumberFormat.INTERNATIONAL)

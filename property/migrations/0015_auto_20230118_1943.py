@@ -34,6 +34,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='owner',
             name='flats',
-            field=models.ManyToManyField(blank=True, related_name='owners', to='property.Flat', verbose_name='Квартиры'),
+            field=models.ManyToManyField(null=True, related_name='owners', to='property.Flat', verbose_name='Квартиры'),
         ),
     ]
